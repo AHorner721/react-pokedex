@@ -1,0 +1,17 @@
+.circle {
+  height: 50px;
+  width: 50px;
+  background: skyblue;
+  border: solid white 5px;
+  border-radius: 50%;
+}
+
+.banner {
+  width: 100%;
+  display: flex;
+  border: solid white 2px;
+  margin: 0;
+  text-align: center;
+  justify-content: space-between;
+  align-items: center;
+}

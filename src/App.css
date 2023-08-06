@@ -1,0 +1,29 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+main {
+  display: flex;
+  justify-content: space-evenly;
+  border: solid white 2px;
+  width: 100%;
+}
+
+main div,
+.list {
+  height: 90vh;
+}
+
+.list {
+  border: solid 5px green;
+  width: 20%;
+  margin: 0;
+  overflow: scroll;
+  list-style: none;
+}
+
+.list li:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
