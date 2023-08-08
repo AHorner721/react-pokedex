@@ -1,12 +1,13 @@
 import "./banner.css";
-import Search from "../Search/Search";
 
 function Banner() {
   return (
     <div className="banner">
-      <div className="circle"></div>
+      <div className="blue circle"></div>
+      <div className="red"></div>
+      <div className="yellow"></div>
+      <div className="green"></div>
       <h1>Pokedex</h1>
-      <Search />
     </div>
   );
 }

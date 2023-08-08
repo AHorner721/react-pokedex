@@ -2,7 +2,7 @@ import "./search.css";
 
 function Search() {
   return (
-    <div>
+    <div className="searchContainer">
       <input className="searchBox" type="text" />
       <button>
         <i className="fas fa-search"></i>

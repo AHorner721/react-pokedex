@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Banner from "./Components/Banner/Banner";
+import Search from "./Components/Search/Search";
 import Display from "./Components/Display/Display";
 import "./App.css";
 
@@ -8,8 +9,7 @@ function App() {
   const [pokemonList, setPokemonList] = useState([]);
 
   const handleClick = (e) => {
-    //do stuff
-    // console.log("clicked!", e.target.innerText);
+    console.log("clicked!", e.target.innerText);
     setName(e.target.innerText);
   };
 
@@ -26,14 +26,17 @@ function App() {
     <>
       <Banner />
       <main>
-        <Display Pokemon={name} />
-        <ul className="list">
-          {pokemonList.map((pokemon, index) => (
-            <li key={index} onClick={handleClick}>
-              {pokemon.name}
-            </li>
-          ))}
-        </ul>
+        <Search />
+        <div className="wrapper">
+          <Display name={name} />
+          <ul className="list">
+            {pokemonList.map((pokemon, index) => (
+              <li key={index} onClick={handleClick}>
+                {pokemon.name}
+              </li>
+            ))}
+          </ul>
+        </div>
       </main>
     </>
   );

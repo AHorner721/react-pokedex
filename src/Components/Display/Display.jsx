@@ -3,11 +3,12 @@ import PropTypes from "prop-types";
 import "./display.css";
 
 function Display({ name }) {
+  // console.log("am i getting a name? ", name);
   const [pokemon, setPokemon] = useState();
   const [description, setDescription] = useState();
 
   useEffect(() => {
-    const pokemonName = name ? name : "pikachu";
+    const pokemonName = name ? name.trim().toLowerCase() : "pikachu";
     const URL = "https://pokeapi.co/api/v2/pokemon/";
     const speciesURL = "https://pokeapi.co/api/v2/pokemon-species/";
 
@@ -33,7 +34,7 @@ function Display({ name }) {
       {pokemon && (
         <>
           <img
-            src={pokemon.sprites.front_default}
+            src={pokemon.sprites.other["official-artwork"].front_default}
             width={350}
             height={350}
             alt="pikachu"

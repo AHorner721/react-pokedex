@@ -1,3 +1,9 @@
 .searchBox {
   min-height: 50px;
+  min-width: 50%;
+}
+
+.searchContainer {
+  text-align: center;
+  margin: 16px;
 }

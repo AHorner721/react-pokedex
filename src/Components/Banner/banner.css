@@ -1,6 +1,6 @@
 .circle {
-  height: 50px;
-  width: 50px;
+  width: 5rem;
+  height: 5rem;
   background: skyblue;
   border: solid white 5px;
   border-radius: 50%;
@@ -9,9 +9,42 @@
 .banner {
   width: 100%;
   display: flex;
-  border: solid white 2px;
+  border-bottom: solid black 2px;
   margin: 0;
   text-align: center;
-  justify-content: space-between;
   align-items: center;
+  padding: 12px 20px;
+  background: #991c1c;
+}
+
+.blue {
+  background: linear-gradient(#98e6f0, #30447a);
+  border: solid white 5px;
+}
+
+.red,
+.yellow,
+.green {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.red {
+  background: linear-gradient(#f38787, #ce3131);
+  margin-left: 8px;
+}
+
+.yellow {
+  background: linear-gradient(#f3f1d1, #e4d503);
+}
+
+.green {
+  background: linear-gradient(#aadf91, #4ec019);
+}
+
+h1 {
+  margin: 0px auto;
+  font-size: 2.5rem;
 }
