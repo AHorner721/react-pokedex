@@ -1,13 +1,16 @@
 #root {
-  max-width: 1280px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 main {
-  border: solid #991c1c 2px;
-  border-width: 1em;
+  padding: 0px 50px;
+  border-left: 20px solid #991c1c;
+  border-right: 20px solid #991c1c;
   width: 100%;
+  min-height: 100%;
   font-size: 1.6rem;
+  background: #141414;
 }
 
 h2 {
@@ -18,7 +21,7 @@ h2 {
   /* border: solid 5px green; */
   width: 20%;
   min-width: 300px;
-  max-height: 700px;
+  max-height: 593px;
   margin: 0;
   overflow: scroll;
   overflow-x: hidden;
@@ -41,28 +44,45 @@ h2 {
 }
 
 .list li {
-  background: grey;
+  font-size: 1.8rem;
+  background: #373737;
+  border-left: solid 4px #991c1c;
   width: 90%;
   margin: 10px auto;
-  transform: scale(1) skewX(-10deg);
-  transition: transform 0.3s;
+  transform: scale(1);
+  transition: all 0.3s ease;
+  padding: 4px 0;
 }
 
 .list li:hover {
   cursor: pointer;
-  text-decoration: underline;
-  transform: scale(1.2) skewX(-10deg);
+  transform: scale(1.07);
+  border-left: solid 4px #991c1c;
+}
+
+.list li:active {
+  background: lightslategray;
+  color: #141414;
 }
 
 .wrapper {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  max-width: 1320px;
+  margin: 0 auto;
 }
 
 @media (max-width: 960px) {
   .list {
     max-height: 500px;
     width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  .list {
+    max-height: 500px;
+    width: 95%;
   }
 }

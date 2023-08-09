@@ -1,11 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
+import { gsap } from "gsap";
 import "./display.css";
 
 function Display({ name }) {
   // console.log("am i getting a name? ", name);
   const [pokemon, setPokemon] = useState();
   const [description, setDescription] = useState();
+
+  const imgRef = useRef(null);
+  const titleRef = useRef(null);
 
   useEffect(() => {
     const pokemonName = name ? name.trim().toLowerCase() : "pikachu";
@@ -29,22 +33,56 @@ function Display({ name }) {
       });
   }, [name]);
 
+  useEffect(() => {
+    if (pokemon && description) {
+      gsap.fromTo(
+        imgRef.current,
+        { y: "100", opacity: 0, duration: 1.5, ease: "power2" },
+        { y: 0, opacity: 1, duration: 1.5, ease: "bounce" }
+      );
+      gsap.fromTo(
+        titleRef.current,
+        { y: "100", opacity: 0, duration: 1.5, ease: "power2" },
+        { y: 0, opacity: 1, duration: 1.5, ease: "power2" }
+      );
+    }
+  }, [pokemon, imgRef, description]);
+
   return (
     <div className="display">
       {pokemon && (
         <>
-          <img
-            src={pokemon.sprites.other["official-artwork"].front_default}
-            width={350}
-            height={350}
-            alt="pikachu"
-          />
-          <h2>
-            #{pokemon.id} {pokemon.name}
-          </h2>
+          <div className="imageWrapper">
+            <img
+              src={pokemon.sprites.other["official-artwork"].front_default}
+              width={350}
+              height={350}
+              alt="pikachu"
+              ref={imgRef}
+            />
+          </div>
+          <div className="pokemonName">
+            <h2 ref={titleRef}>
+              #{pokemon.id} {pokemon.name}
+            </h2>
+          </div>
         </>
       )}
-      {description && <p>{description.flavor_text_entries[10].flavor_text}</p>}
+      <div className="pokemonMetaData">
+        {description && (
+          <>
+            <span>Type: {pokemon.types[0].type.name}</span>
+            <span>Habitat: {description.habitat.name}</span>
+            <span>Height: {pokemon.height / 10} m</span>
+            <span>Weight: {pokemon.weight / 10} kg</span>
+          </>
+        )}
+      </div>
+      <div className="pokemonDescription">
+        {description && (
+          <p>{description.flavor_text_entries[10].flavor_text}</p>
+        )}
+      </div>
     </div>
   );
 }

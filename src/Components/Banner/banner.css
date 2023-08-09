@@ -1,25 +1,33 @@
-.circle {
+.blueCircle {
   width: 5rem;
   height: 5rem;
-  background: skyblue;
+  background: linear-gradient(#98e6f0, #30447a);
   border: solid white 5px;
   border-radius: 50%;
+  position: absolute;
+  top: 0.8rem;
+  left: 7rem;
+  box-shadow: 3px 3px 1px rgba(0, 0, 0, 0.2);
+}
+.whiteCircle {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 1.3rem;
+  left: 7.6rem;
 }
 
 .banner {
   width: 100%;
   display: flex;
-  border-bottom: solid black 2px;
+  border-bottom: solid black 4px;
   margin: 0;
   text-align: center;
   align-items: center;
-  padding: 12px 20px;
+  padding: 18px 20px;
   background: #991c1c;
-}
-
-.blue {
-  background: linear-gradient(#98e6f0, #30447a);
-  border: solid white 5px;
 }
 
 .red,
@@ -28,23 +36,59 @@
   width: 1.8rem;
   height: 1.8rem;
   border-radius: 50%;
-  margin-left: 8px;
+  position: absolute;
+  top: 2.8rem;
 }
 
 .red {
   background: linear-gradient(#f38787, #ce3131);
-  margin-left: 8px;
+  left: 14rem;
 }
 
 .yellow {
   background: linear-gradient(#f3f1d1, #e4d503);
+  left: 18rem;
 }
 
 .green {
   background: linear-gradient(#aadf91, #4ec019);
+  left: 22rem;
 }
 
 h1 {
-  margin: 0px auto;
+  margin: 0 auto;
   font-size: 2.5rem;
+  text-align: center;
+  color: white;
+}
+
+@media (max-width: 960px) {
+  h1 {
+    /* margin-left: 10%; */
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    visibility: hidden;
+  }
+  .blueCircle {
+    left: 2rem;
+  }
+
+  .whiteCircle {
+    left: 2.5rem;
+  }
+  .red {
+    left: 8rem;
+  }
+
+  .yellow {
+    left: 11rem;
+  }
+
+  .green {
+    left: 14rem;
+  }
 }
