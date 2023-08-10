@@ -42,8 +42,8 @@ function Display({ name }) {
       );
       gsap.fromTo(
         titleRef.current,
-        { y: "100", opacity: 0, duration: 1.5, ease: "power2" },
-        { y: 0, opacity: 1, duration: 1.5, ease: "power2" }
+        { y: "100", opacity: 0, duration: 1, ease: "power2" },
+        { y: 0, opacity: 1, duration: 1, ease: "power2" }
       );
     }
   }, [pokemon, imgRef, description]);
@@ -57,12 +57,13 @@ function Display({ name }) {
               src={pokemon.sprites.other["official-artwork"].front_default}
               width={350}
               height={350}
-              alt="pikachu"
+              alt={pokemon.name}
               ref={imgRef}
+              tabIndex="3"
             />
           </div>
           <div className="pokemonName">
-            <h2 ref={titleRef}>
+            <h2 ref={titleRef} tabIndex="4">
               #{pokemon.id} {pokemon.name}
             </h2>
           </div>
@@ -71,16 +72,16 @@ function Display({ name }) {
       <div className="pokemonMetaData">
         {description && (
           <>
-            <span>Type: {pokemon.types[0].type.name}</span>
-            <span>Habitat: {description.habitat.name}</span>
-            <span>Height: {pokemon.height / 10} m</span>
-            <span>Weight: {pokemon.weight / 10} kg</span>
+            <span tabIndex="5">Type: {pokemon.types[0].type.name}</span>
+            <span tabIndex="6">Habitat: {description.habitat.name}</span>
+            <span tabIndex="7">Height: {pokemon.height / 10} m</span>
+            <span tabIndex="8">Weight: {pokemon.weight / 10} kg</span>
           </>
         )}
       </div>
       <div className="pokemonDescription">
         {description && (
-          <p>{description.flavor_text_entries[10].flavor_text}</p>
+          <p tabIndex="9">{description.flavor_text_entries[10].flavor_text}</p>
         )}
       </div>
     </div>
