@@ -20,6 +20,13 @@ function App() {
     setName(e.target.innerText);
   };
 
+  const handleEnter = (e) => {
+    if (e.keyCode === 13) {
+      console.log("enter key pressed!", e.target.innerText);
+      handleClick(e);
+    }
+  };
+
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
       .then((response) => response.json())
@@ -36,10 +43,11 @@ function App() {
           <input
             className="searchBox"
             type="text"
-            placeholder="Search"
+            placeholder="Search Pokedex"
             onChange={handleChange}
             value={searchName}
             tabIndex="1"
+            name="Search input field"
           />
           <button type="submit" tabIndex="2">
             <i className="fas fa-search"></i>
@@ -49,7 +57,12 @@ function App() {
           <Display name={name} />
           <ul className="list">
             {pokemonList.map((pokemon, index) => (
-              <li key={index} onClick={handleClick} tabIndex={index + 10}>
+              <li
+                key={index}
+                onClick={handleClick}
+                onKeyDown={handleEnter}
+                tabIndex={index + 10}
+              >
                 {pokemon.name}
               </li>
             ))}

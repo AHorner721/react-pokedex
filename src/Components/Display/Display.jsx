@@ -57,7 +57,7 @@ function Display({ name }) {
               src={pokemon.sprites.other["official-artwork"].front_default}
               width={350}
               height={350}
-              alt={pokemon.name}
+              alt={"Picture of " + pokemon.name}
               ref={imgRef}
               tabIndex="3"
             />
