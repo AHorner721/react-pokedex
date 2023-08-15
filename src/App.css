@@ -74,7 +74,7 @@ h2 {
   margin: 0 auto;
 }
 
-.searchBox {
+.searchInput {
   min-height: 50px;
   min-width: 20%;
   font-size: 1.6rem;
@@ -83,7 +83,7 @@ h2 {
   padding-left: 10px;
 }
 
-.searchContainer {
+.searchForm {
   text-align: end;
   max-width: 1320px;
   margin: 0 auto;
@@ -110,10 +110,14 @@ h2 {
 
 @media (max-width: 500px) {
   .list {
-    max-height: 500px;
+    max-height: 150px;
     width: 95%;
   }
   .searchBox {
     min-width: 80%;
+  }
+
+  main {
+    padding: 0;
   }
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { gsap } from "gsap";
 import "./display.css";
@@ -8,8 +8,20 @@ function Display({ name }) {
   const [pokemon, setPokemon] = useState();
   const [description, setDescription] = useState();
 
-  const imgRef = useRef(null);
-  const titleRef = useRef(null);
+  const handleLoad = () => {
+    if (pokemon) {
+      gsap.fromTo(
+        ".image",
+        { y: "100", opacity: 0, duration: 1.5, ease: "power2" },
+        { y: 0, opacity: 1, duration: 1.5, ease: "bounce" }
+      );
+      gsap.fromTo(
+        ".displayText",
+        { y: "100", opacity: 0, duration: 1, ease: "power2" },
+        { y: 0, opacity: 1, duration: 1, ease: "power2" }
+      );
+    }
+  };
 
   useEffect(() => {
     const pokemonName = name ? name.trim().toLowerCase() : "pikachu";
@@ -33,37 +45,23 @@ function Display({ name }) {
       });
   }, [name]);
 
-  useEffect(() => {
-    if (pokemon && description) {
-      gsap.fromTo(
-        imgRef.current,
-        { y: "100", opacity: 0, duration: 1.5, ease: "power2" },
-        { y: 0, opacity: 1, duration: 1.5, ease: "bounce" }
-      );
-      gsap.fromTo(
-        titleRef.current,
-        { y: "100", opacity: 0, duration: 1, ease: "power2" },
-        { y: 0, opacity: 1, duration: 1, ease: "power2" }
-      );
-    }
-  }, [pokemon, imgRef, description]);
-
   return (
     <div className="display">
       {pokemon && (
         <>
           <div className="imageWrapper">
             <img
+              className="image"
               src={pokemon.sprites.other["official-artwork"].front_default}
               width={350}
               height={350}
               alt={"Picture of " + pokemon.name}
-              ref={imgRef}
               tabIndex="3"
+              onLoad={handleLoad}
             />
           </div>
           <div className="pokemonName">
-            <h2 ref={titleRef} tabIndex="4">
+            <h2 className="displayText" tabIndex="4">
               #{pokemon.id} {pokemon.name}
             </h2>
           </div>
@@ -72,16 +70,26 @@ function Display({ name }) {
       <div className="pokemonMetaData">
         {description && (
           <>
-            <span tabIndex="5">Type: {pokemon.types[0].type.name}</span>
-            <span tabIndex="6">Habitat: {description.habitat.name}</span>
-            <span tabIndex="7">Height: {pokemon.height / 10} m</span>
-            <span tabIndex="8">Weight: {pokemon.weight / 10} kg</span>
+            <span className="displayText" tabIndex="5">
+              Type: {pokemon.types[0].type.name}
+            </span>
+            <span className="displayText" tabIndex="6">
+              Habitat: {description.habitat.name}
+            </span>
+            <span className="displayText" tabIndex="7">
+              Height: {pokemon.height / 10} m
+            </span>
+            <span className="displayText" tabIndex="8">
+              Weight: {pokemon.weight / 10} kg
+            </span>
           </>
         )}
       </div>
       <div className="pokemonDescription">
         {description && (
-          <p tabIndex="9">{description.flavor_text_entries[10].flavor_text}</p>
+          <p className="displayText" tabIndex="9">
+            {description.flavor_text_entries[10].flavor_text}
+          </p>
         )}
       </div>
     </div>

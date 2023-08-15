@@ -36,7 +36,7 @@
 
 .imageWrapper {
   width: 70%;
-  min-width: 350px;
+  min-width: 300px;
   background-color: black;
   /* background-color: #30447a; */
   border: 4px inset grey;
@@ -45,7 +45,7 @@
 }
 
 .imageWrapper img {
-  width: auto;
+  width: 80%;
 }
 
 @media (max-width: 960px) {
@@ -72,6 +72,9 @@
     min-height: 112px;
   }
   .pokemonMetaData {
+    width: 100%;
+  }
+  .imageWrapper img {
     width: 100%;
   }
 }

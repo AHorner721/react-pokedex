@@ -39,10 +39,10 @@ function App() {
     <>
       <Banner />
       <main>
-        <form className="searchContainer" onSubmit={handleSubmit}>
+        <form className="searchForm" onSubmit={handleSubmit}>
           <input
-            className="searchBox"
-            type="text"
+            className="searchInput"
+            type="search"
             placeholder="Search Pokedex"
             onChange={handleChange}
             value={searchName}
