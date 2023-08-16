@@ -7,8 +7,9 @@ function Display({ name }) {
   // console.log("am i getting a name? ", name);
   const [pokemon, setPokemon] = useState();
   const [description, setDescription] = useState();
+  const [imageLoaded, setImageLoaded] = useState(false);
 
-  const handleLoad = () => {
+  const handleLoadImage = () => {
     if (pokemon) {
       gsap.fromTo(
         ".image",
@@ -20,10 +21,12 @@ function Display({ name }) {
         { y: "100", opacity: 0, duration: 1, ease: "power2" },
         { y: 0, opacity: 1, duration: 1, ease: "power2" }
       );
+      setImageLoaded(true);
     }
   };
 
   useEffect(() => {
+    setImageLoaded(false);
     const pokemonName = name ? name.trim().toLowerCase() : "pikachu";
     const URL = "https://pokeapi.co/api/v2/pokemon/";
     const speciesURL = "https://pokeapi.co/api/v2/pokemon-species/";
@@ -57,37 +60,62 @@ function Display({ name }) {
               height={350}
               alt={"Picture of " + pokemon.name}
               tabIndex="3"
-              onLoad={handleLoad}
+              onLoad={handleLoadImage}
+              style={{ visibility: imageLoaded ? "visible" : "hidden" }}
             />
           </div>
           <div className="pokemonName">
-            <h2 className="displayText" tabIndex="4">
+            <h2
+              className="displayText"
+              tabIndex="4"
+              style={{ visibility: imageLoaded ? "visible" : "hidden" }}
+            >
               #{pokemon.id} {pokemon.name}
             </h2>
           </div>
         </>
       )}
       <div className="pokemonMetaData">
-        {description && (
+        {pokemon && (
           <>
-            <span className="displayText" tabIndex="5">
+            <span
+              className="displayText"
+              tabIndex="5"
+              style={{ visibility: imageLoaded ? "visible" : "hidden" }}
+            >
               Type: {pokemon.types[0].type.name}
             </span>
-            <span className="displayText" tabIndex="6">
+            <span
+              className="displayText"
+              tabIndex="6"
+              style={{ visibility: imageLoaded ? "visible" : "hidden" }}
+            >
               Habitat: {description.habitat.name}
             </span>
-            <span className="displayText" tabIndex="7">
+            <span
+              className="displayText"
+              tabIndex="7"
+              style={{ visibility: imageLoaded ? "visible" : "hidden" }}
+            >
               Height: {pokemon.height / 10} m
             </span>
-            <span className="displayText" tabIndex="8">
+            <span
+              className="displayText"
+              tabIndex="8"
+              style={{ visibility: imageLoaded ? "visible" : "hidden" }}
+            >
               Weight: {pokemon.weight / 10} kg
             </span>
           </>
         )}
       </div>
       <div className="pokemonDescription">
-        {description && (
-          <p className="displayText" tabIndex="9">
+        {pokemon && (
+          <p
+            className="displayText"
+            tabIndex="9"
+            style={{ visibility: imageLoaded ? "visible" : "hidden" }}
+          >
             {description.flavor_text_entries[10].flavor_text}
           </p>
         )}
