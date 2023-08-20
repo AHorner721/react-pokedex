@@ -15,8 +15,8 @@
 .pokemonName {
   text-transform: capitalize;
   background: #373737;
-  border-left: solid 8px #991c1c;
-  border-right: solid 8px #991c1c;
+  border-left: solid 8px #c71616;
+  border-right: solid 8px #c71616;
 }
 
 .pokemonMetaData {
@@ -39,7 +39,7 @@
   min-width: 300px;
   background-color: black;
   /* background-color: #30447a; */
-  border: 4px inset grey;
+  border: 4px inset #808080;
   margin: 0 auto;
   overflow: hidden;
 }
