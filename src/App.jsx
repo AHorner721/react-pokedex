@@ -22,7 +22,7 @@ function App() {
 
   const handleEnter = (e) => {
     if (e.keyCode === 13) {
-      console.log("enter key pressed!", e.target.innerText);
+      // console.log("enter key pressed!", e.target.innerText);
       handleClick(e);
     }
   };

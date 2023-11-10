@@ -1,0 +1,7 @@
+<svg class="pokeball" width="144" height="145" viewBox="0 0 144 145" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M72 2C33.0639 2 1.5 33.5639 1.5 72.5H142.5C142.5 33.5639 110.936 2 72 2Z" fill="#991C1C"/>
+<path d="M1.5 72.5C1.5 111.436 33.0639 143 72 143C110.936 143 142.5 111.436 142.5 72.5H1.5Z" fill="#ECECEC"/>
+<path d="M1.5 72.5C1.5 33.5639 33.0639 2 72 2C110.936 2 142.5 33.5639 142.5 72.5M1.5 72.5C1.5 111.436 33.0639 143 72 143C110.936 143 142.5 111.436 142.5 72.5M1.5 72.5H142.5" stroke="black" stroke-width="3"/>
+<circle cx="72" cy="73" r="22.5" fill="#ECECEC" stroke="black" stroke-width="3"/>
+<circle cx="72" cy="73" r="13.5" fill="#ECECEC" stroke="black" stroke-width="3"/>
+</svg>
