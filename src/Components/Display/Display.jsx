@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { gsap } from "gsap";
 import "./display.css";
 
-function Display({ name }) {
+// eslint-disable-next-line react/prop-types
+function Display({ name, mode }) {
   // console.log("am i getting a name? ", name);
   const [pokemon, setPokemon] = useState();
   const [description, setDescription] = useState();
@@ -52,7 +53,7 @@ function Display({ name }) {
     <div className="display">
       {pokemon && (
         <>
-          <div className="imageWrapper">
+          <div className={mode ? "imageWrapper blueBg" : "imageWrapper"}>
             <img
               className="image"
               src={pokemon.sprites.other["official-artwork"].front_default}
@@ -64,9 +65,14 @@ function Display({ name }) {
               style={{ visibility: imageLoaded ? "visible" : "hidden" }}
             />
           </div>
-          <div className="pokemonName">
+          <div
+            className={mode ? "pokemonName light" : "pokemonName"}
+            style={{
+              borderBottom: "solid grey 2px",
+            }}
+          >
             <h2
-              className="displayText"
+              className={mode ? "displayText light" : "displayText"}
               tabIndex="4"
               style={{ visibility: imageLoaded ? "visible" : "hidden" }}
             >
@@ -79,28 +85,28 @@ function Display({ name }) {
         {pokemon && (
           <>
             <span
-              className="displayText"
+              className={mode ? "displayText light" : "displayText"}
               tabIndex="5"
               style={{ visibility: imageLoaded ? "visible" : "hidden" }}
             >
               Type: {pokemon.types[0].type.name}
             </span>
             <span
-              className="displayText"
+              className={mode ? "displayText light" : "displayText"}
               tabIndex="6"
               style={{ visibility: imageLoaded ? "visible" : "hidden" }}
             >
               Habitat: {description.habitat.name}
             </span>
             <span
-              className="displayText"
+              className={mode ? "displayText light" : "displayText"}
               tabIndex="7"
               style={{ visibility: imageLoaded ? "visible" : "hidden" }}
             >
               Height: {pokemon.height / 10} m
             </span>
             <span
-              className="displayText"
+              className={mode ? "displayText light" : "displayText"}
               tabIndex="8"
               style={{ visibility: imageLoaded ? "visible" : "hidden" }}
             >
@@ -112,7 +118,7 @@ function Display({ name }) {
       <div className="pokemonDescription">
         {pokemon && (
           <p
-            className="displayText"
+            className={mode ? "displayText light" : "displayText"}
             tabIndex="9"
             style={{ visibility: imageLoaded ? "visible" : "hidden" }}
           >

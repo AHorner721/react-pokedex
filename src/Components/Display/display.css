@@ -48,6 +48,10 @@
   width: 80%;
 }
 
+.blueBg {
+  background-color: #425a9b;
+}
+
 @media (max-width: 960px) {
   .display {
     width: 80%;

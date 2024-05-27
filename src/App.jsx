@@ -7,6 +7,7 @@ function App() {
   const [name, setName] = useState("pikachu");
   const [searchName, setSearchName] = useState("");
   const [pokemonList, setPokemonList] = useState([]);
+  const [lightMode, setLightMode] = useState(false);
 
   const handleChange = (e) => {
     setSearchName(e.target.value);
@@ -27,6 +28,11 @@ function App() {
     }
   };
 
+  const handleClickLightMode = () => {
+    console.log("light model", !lightMode);
+    setLightMode(!lightMode);
+  };
+
   useEffect(() => {
     fetch("https://pokeapi.co/api/v2/pokemon?limit=151")
       .then((response) => response.json())
@@ -37,11 +43,14 @@ function App() {
 
   return (
     <>
-      <Banner />
-      <main>
-        <form className="searchForm" onSubmit={handleSubmit}>
+      <Banner mode={lightMode} handleClickLight={handleClickLightMode} />
+      <main className={lightMode ? "light" : ""}>
+        <form
+          className={lightMode ? "searchForm light" : "searchForm"}
+          onSubmit={handleSubmit}
+        >
           <input
-            className="searchInput"
+            className={lightMode ? "searchInput light" : "searchInput"}
             type="search"
             placeholder="Search Pokedex"
             onChange={handleChange}
@@ -53,15 +62,19 @@ function App() {
             <i className="fas fa-search"></i>
           </button>
         </form>
-        <div className="wrapper">
-          <Display name={name} />
-          <ul className="list">
+        <div className={lightMode ? "wrapper light" : "wrapper"}>
+          <Display name={name} mode={lightMode} />
+          <ul className={lightMode ? "list light" : "list"}>
             {pokemonList.map((pokemon, index) => (
               <li
                 key={index}
                 onClick={handleClick}
                 onKeyDown={handleEnter}
                 tabIndex={index + 10}
+                className={lightMode ? "light" : ""}
+                style={{
+                  borderBottom: "solid grey 2px",
+                }}
               >
                 {pokemon.name}
               </li>

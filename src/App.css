@@ -94,6 +94,11 @@ h2 {
   font-size: 14px;
 }
 
+.light {
+  background: white !important;
+  color: #141414 !important;
+}
+
 @media (max-width: 960px) {
   .list {
     max-height: 500px;
